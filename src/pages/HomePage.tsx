@@ -141,7 +141,7 @@ const Header = ({ user, onLogout }: HomePageProps) => {
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#0f9d58] transition-all duration-300 group-hover:w-full" />
             </Link>
 
-            <a href="/WinStrike.apk" download className="flex items-center gap-2 text-white hover:text-[#0f9d58] transition-colors duration-300 relative group">
+            <a href="https://expo.dev/accounts/winstrike.info/projects/moripgc/builds/731eb338-44ae-4319-942e-495662b80019" download className="flex items-center gap-2 text-white hover:text-[#0f9d58] transition-colors duration-300 relative group">
               <Smartphone className="w-4 h-4" />
               ایپ ڈاؤنلوڈ کریں
             </a>
@@ -193,7 +193,7 @@ const Header = ({ user, onLogout }: HomePageProps) => {
               ہوم
             </Link>
 
-            <a href="/WinStrike.apk" download className="text-white hover:text-[#0f9d58] transition-colors flex items-center gap-2" onClick={() => setIsMobileMenuOpen(false)}>
+            <a href="https://expo.dev/accounts/winstrike.info/projects/moripgc/builds/731eb338-44ae-4319-942e-495662b80019" download className="text-white hover:text-[#0f9d58] transition-colors flex items-center gap-2" onClick={() => setIsMobileMenuOpen(false)}>
               <Smartphone className="w-4 h-4" />
               ایپ ڈاؤنلوڈ کریں
             </a>
@@ -328,7 +328,7 @@ const HeroSection = () => {
             <Sparkles className="w-5 h-5" />
             ابھی جوائن کریں
           </Link>
-          <a href="/WinStrike.apk" download className="btn-secondary text-lg flex items-center justify-center gap-2 bg-[#0a7a44] border-transparent text-white hover:bg-[#0f9d58]">
+          <a href="https://expo.dev/accounts/winstrike.info/projects/moripgc/builds/731eb338-44ae-4319-942e-495662b80019" download className="btn-secondary text-lg flex items-center justify-center gap-2 bg-[#0a7a44] border-transparent text-white hover:bg-[#0f9d58]">
             <Smartphone className="w-5 h-5" />
             ایپ ڈاؤنلوڈ کریں
           </a>
