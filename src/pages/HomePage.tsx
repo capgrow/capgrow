@@ -141,10 +141,10 @@ const Header = ({ user, onLogout }: HomePageProps) => {
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#0f9d58] transition-all duration-300 group-hover:w-full" />
             </Link>
 
-            <a href="https://expo.dev/accounts/winstrike.info/projects/moripgc/builds/d32936c1-3ff2-4ec5-a105-4bee32213c20" download className="flex items-center gap-2 text-white hover:text-[#0f9d58] transition-colors duration-300 relative group">
+            <span className="flex items-center gap-2 text-gray-400 relative group cursor-not-allowed">
               <Smartphone className="w-4 h-4" />
-              ایپ ڈاؤنلوڈ کریں
-            </a>
+              Coming Soon
+            </span>
             {user ? (
               <>
                 <Link
@@ -193,10 +193,10 @@ const Header = ({ user, onLogout }: HomePageProps) => {
               ہوم
             </Link>
 
-            <a href="https://expo.dev/accounts/winstrike.info/projects/moripgc/builds/d32936c1-3ff2-4ec5-a105-4bee32213c20" download className="text-white hover:text-[#0f9d58] transition-colors flex items-center gap-2" onClick={() => setIsMobileMenuOpen(false)}>
+            <span className="text-gray-400 flex items-center gap-2 cursor-not-allowed">
               <Smartphone className="w-4 h-4" />
-              ایپ ڈاؤنلوڈ کریں
-            </a>
+              Coming Soon
+            </span>
             {user ? (
               <>
                 <Link
@@ -328,10 +328,10 @@ const HeroSection = () => {
             <Sparkles className="w-5 h-5" />
             ابھی جوائن کریں
           </Link>
-          <a href="https://expo.dev/accounts/winstrike.info/projects/moripgc/builds/d32936c1-3ff2-4ec5-a105-4bee32213c20" download className="btn-secondary text-lg flex items-center justify-center gap-2 bg-[#0a7a44] border-transparent text-white hover:bg-[#0f9d58]">
+          <span className="btn-secondary text-lg flex items-center justify-center gap-2 bg-[#2a2a2a] border-transparent text-gray-400 cursor-not-allowed">
             <Smartphone className="w-5 h-5" />
-            ایپ ڈاؤنلوڈ کریں
-          </a>
+            Coming Soon
+          </span>
           <Link to="/login" className="btn-secondary text-lg flex items-center justify-center gap-2">
             <ArrowLeft className="w-5 h-5" />
             لاگ ان کریں
