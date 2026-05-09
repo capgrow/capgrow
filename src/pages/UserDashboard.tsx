@@ -495,16 +495,17 @@ const UpcomingDraws = ({ setActiveTab, onSelectDraw }: { user?: any, setActiveTa
   const [draws, setDraws] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
 
+  const fetchDraws = async () => {
+    const supabase = createClient();
+    const { data } = await supabase.from('lucky_draws')
+      .select('*')
+      .eq('status', 'ACTIVE')
+      .order('created_at', { ascending: false });
+    if (data) setDraws(data);
+    setLoading(false);
+  };
+
   useEffect(() => {
-    const fetchDraws = async () => {
-      const supabase = createClient();
-      const { data } = await supabase.from('lucky_draws')
-        .select('*')
-        .eq('status', 'ACTIVE')
-        .order('created_at', { ascending: false });
-      if (data) setDraws(data);
-      setLoading(false);
-    };
     fetchDraws();
   }, []);
 
@@ -587,15 +588,16 @@ const Results = () => {
   const [winners, setWinners] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
 
+  const fetchWinners = async () => {
+    const supabase = createClient();
+    const { data } = await supabase.from('winners')
+      .select('*')
+      .order('created_at', { ascending: false });
+    if (data) setWinners(data);
+    setLoading(false);
+  };
+
   useEffect(() => {
-    const fetchWinners = async () => {
-      const supabase = createClient();
-      const { data } = await supabase.from('winners')
-        .select('*')
-        .order('created_at', { ascending: false });
-      if (data) setWinners(data);
-      setLoading(false);
-    };
     fetchWinners();
   }, []);
 

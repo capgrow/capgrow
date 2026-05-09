@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { 
   LayoutDashboard, Users, Wallet, Trophy, LogOut, 
   Menu, CheckCircle, X, ChevronRight,
-  Search, Filter, User, CreditCard, Crown,
+  User, CreditCard, Crown,
   Calendar, Clock, Upload, Gift, Eye, AlertTriangle
 } from 'lucide-react';
 import { createClient } from '../utils/supabase/client';
@@ -403,7 +403,7 @@ const UpcomingDraws = () => {
     const supabase = createClient();
     
     // Fetch draws first
-    const { data: drawsList, error: err } = await supabase.from('lucky_draws')
+    const { data: drawsList } = await supabase.from('lucky_draws')
       .select('*')
       .eq('status', 'ACTIVE')
       .order('created_at', { ascending: false });
@@ -490,13 +490,6 @@ const UpcomingDraws = () => {
   };
 
   // Sample invested users for each draw
-  const investedUsers = [
-    { name: 'علی احمد', cnic: '35201-1234567-8', date: '2024-12-20', amount: '10 روپے' },
-    { name: 'محمد حسن', cnic: '35201-2345678-9', date: '2024-12-19', amount: '10 روپے' },
-    { name: 'احمد خان', cnic: '35201-3456789-0', date: '2024-12-18', amount: '10 روپے' },
-    { name: 'عمر فاروق', cnic: '35201-4567890-1', date: '2024-12-17', amount: '10 روپے' },
-    { name: 'بلال احمد', cnic: '35201-5678901-2', date: '2024-12-16', amount: '10 روپے' },
-  ];
 
   return (
     <div>
