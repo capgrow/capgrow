@@ -1,0 +1,93 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+enum Role {
+  USER
+  ADMIN
+}
+
+enum DrawStatus {
+  ACTIVE
+  COMPLETED
+  CANCELLED
+}
+
+enum TransactionType {
+  DEPOSIT
+  WITHDRAWAL
+  TICKET_PURCHASE
+  PRIZE_WIN
+}
+
+enum TransactionStatus {
+  PENDING
+  COMPLETED
+  FAILED
+}
+
+model User {
+  id           String    @id @default(uuid())
+  name         String
+  email        String    @unique
+  phone        String    @unique
+  password     String
+  role         Role      @default(USER)
+  balance      Float     @default(0)
+  referralCode String    @unique @default(cuid())
+  referredBy   String?
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+
+  tickets      Ticket[]
+  transactions Transaction[]
+  wonDraws     LuckyDraw[]   @relation("DrawWinner")
+}
+
+model LuckyDraw {
+  id          String     @id @default(uuid())
+  title       String
+  description String?
+  entryFee    Float      @default(10)
+  startDate   DateTime   @default(now())
+  endDate     DateTime
+  status      DrawStatus @default(ACTIVE)
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+
+  winnerId    String?
+  winner      User?      @relation("DrawWinner", fields: [winnerId], references: [id])
+  tickets     Ticket[]
+}
+
+model Ticket {
+  id           String    @id @default(uuid())
+  ticketNumber String    @unique
+  createdAt    DateTime  @default(now())
+
+  userId       String
+  user         User      @relation(fields: [userId], references: [id])
+
+  drawId       String
+  draw         LuckyDraw @relation(fields: [drawId], references: [id])
+
+  @@unique([userId, drawId, ticketNumber])
+}
+
+model Transaction {
+  id        String            @id @default(uuid())
+  amount    Float
+  type      TransactionType
+  status    TransactionStatus @default(PENDING)
+  createdAt DateTime          @default(now())
+  updatedAt DateTime          @updatedAt
+
+  userId    String
+  user      User              @relation(fields: [userId], references: [id])
+}
